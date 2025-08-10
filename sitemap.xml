@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://16watt.com/jorando/Index/</loc>
+         <loc>https://16watt.com/jorando/</loc>
          <lastmod>2025-08-10</lastmod>
     </url>
     <url>
@@ -33,11 +33,11 @@
          <lastmod>2025-08-10</lastmod>
     </url>
     <url>
-         <loc>https://16watt.com/jorando/jorando/the_rite_of_reclamation/</loc>
+         <loc>https://16watt.com/jorando/jorando/Unsorted%20Items/</loc>
          <lastmod>2025-08-10</lastmod>
     </url>
     <url>
-         <loc>https://16watt.com/jorando/jorando/bosses/The%20Last%20Pilgrim/</loc>
+         <loc>https://16watt.com/jorando/jorando/the_rite_of_reclamation/</loc>
          <lastmod>2025-08-10</lastmod>
     </url>
     <url>
@@ -49,11 +49,7 @@
          <lastmod>2025-08-10</lastmod>
     </url>
     <url>
-         <loc>https://16watt.com/jorando/jorando/sets/Cistern/set_cistern_2/</loc>
-         <lastmod>2025-08-10</lastmod>
-    </url>
-    <url>
-         <loc>https://16watt.com/jorando/jorando/sets/Cistern/set_the_cistern/</loc>
+         <loc>https://16watt.com/jorando/jorando/sets/Cistern/set_cistern/</loc>
          <lastmod>2025-08-10</lastmod>
     </url>
     <url>
@@ -82,6 +78,10 @@
     </url>
     <url>
          <loc>https://16watt.com/jorando/jorando/sets/Evershade/The%20Hollowed%20Tavern/</loc>
+         <lastmod>2025-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://16watt.com/jorando/jorando/sets/Evershade/The%20Last%20Pilgrim/</loc>
          <lastmod>2025-08-10</lastmod>
     </url>
     <url>
@@ -117,6 +117,30 @@
          <lastmod>2025-08-10</lastmod>
     </url>
     <url>
+         <loc>https://16watt.com/jorando/jorando/sets/Ruined%20Church/Cracked%20Relic%20of%20the%20Hollowed%20Saints/</loc>
+         <lastmod>2025-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://16watt.com/jorando/jorando/sets/Ruined%20Church/Cursed%20Hollowed%20Saints/</loc>
+         <lastmod>2025-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://16watt.com/jorando/jorando/sets/Ruined%20Church/Sacrificial%20Dagger%20of%20the%20Fallen%20Priests/</loc>
+         <lastmod>2025-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://16watt.com/jorando/jorando/sets/Ruined%20Church/Saint%E2%80%99s%20Fingerbone/</loc>
+         <lastmod>2025-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://16watt.com/jorando/jorando/sets/Ruined%20Church/Stained%20Glass%20Shard/</loc>
+         <lastmod>2025-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://16watt.com/jorando/jorando/sets/Ruined%20Church/Twisted%20Branch/</loc>
+         <lastmod>2025-08-10</lastmod>
+    </url>
+    <url>
          <loc>https://16watt.com/jorando/jorando/sets/Ruined%20Church/set_ruined_church/</loc>
          <lastmod>2025-08-10</lastmod>
     </url>
@@ -138,6 +162,10 @@
     </url>
     <url>
          <loc>https://16watt.com/jorando/jorando/sets/Weeping%20Well/The%20Well%20Shaft/</loc>
+         <lastmod>2025-08-10</lastmod>
+    </url>
+    <url>
+         <loc>https://16watt.com/jorando/jorando/sets/Weeping%20Well/Wailbound%20Drowned/</loc>
          <lastmod>2025-08-10</lastmod>
     </url>
     <url>
