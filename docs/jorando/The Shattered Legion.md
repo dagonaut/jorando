@@ -1,4 +1,6 @@
-  
+
+**<span style="color:rgb(255, 0, 0)">Should this be renamed to Broken Legion?</span>**
+
 **Origin and Identity:**
 
 The invading force is known as **The Shattered Legion**, a once-powerful empire from the distant continent of **Rhaskor**. The Shattered Legion is a coalition of warlords, exiled nobility, and fragmented armies from a fallen empire that was destroyed in a cataclysmic event known as the Sundering.

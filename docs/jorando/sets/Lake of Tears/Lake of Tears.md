@@ -26,11 +26,14 @@ The Lake of Tears, once known as **Lacrimara** or the **Lake of Lament**, is a v
 ### **Locations / Traps / Opportunities**
 - **Submerged Altar**  
     Beneath the lake lies a broken altar to an unnamed deity. Removing a relic may calm the lake’s wrath—or provoke it.
+* **Island of Broken Vows**: 
+	* Challenge room (island)
+	* Location for over-arching reclamation ritual
 
 ### **Baddies & Hazards**
 
-- **Gravemare Shades**  
-    Ghostly figures that emerge from the water, their outstretched hands dragging victims beneath.    
+* **Gravemare Shades**
+	Ghostly figures that emerge from the water, their outstretched hands dragging victims beneath.    
 - **Sorrow Eddies**  
     Sudden whirlpools of grief-laden water that pull characters under unless they succeed on a Willpower check.    
 - **Hollowed Fish**  
@@ -39,11 +42,9 @@ The Lake of Tears, once known as **Lacrimara** or the **Lake of Lament**, is a v
 ### **Unique Flora & Fauna**
 
 - **Tearshell Mollusk**  
-    A pale shellfish whose pearls are said to hold condensed grief—harvesting one inflicts a moment of overwhelming sadness.
-    
+    A pale shellfish whose pearls are said to hold condensed grief—harvesting one inflicts a moment of overwhelming sadness.    
 - **Sorrow Lily**  
-    A black-petaled flower that blooms on stones at the lake’s edge. Its scent soothes Ruin but risks luring spirits.
-    
+    A black-petaled flower that blooms on stones at the lake’s edge. Its scent soothes Ruin but risks luring spirits.    
 - **Reflection Eel**  
     Slender eels that slither over submerged objects, revealing hidden runes when touched.
     
@@ -52,29 +53,22 @@ The Lake of Tears, once known as **Lacrimara** or the **Lake of Lament**, is a v
 
 ### **Atmospheric Effects**
 
-- **Perpetual Dusk:** Even at high noon, the horizon remains muted—colors drain into greys.
-    
-- **Echoing Whispers:** The lake’s name carried on the wind, always just out of vocal range.
-    
-- **Weight of Grief:** Characters feel physically heavier with each step toward the water’s edge.
-    
+- **Perpetual Dusk:** Even at high noon, the horizon remains muted—colors drain into greys.    
+- **Echoing Whispers:** The lake’s name carried on the wind, always just out of vocal range.    
+- **Weight of Grief:** Characters feel physically heavier with each step toward the water’s edge.    
 
 ---
 
 ### **Mysteries & Lore**
 
-- **Origin of Lacrimara:** Some say the lake was born of the Hollowed Saints’ final act of atonement—casting their tears into the abyss only to be bound by them.
-    
-- **Island of Broken Vows:** Legends speak of a small islet at the lake’s center where an ancient temple stands, visible only under the blood moon.
-    
+- **Origin of Lacrimara:** Some say the lake was born of the Hollowed Saints’ final act of atonement—casting their tears into the abyss only to be bound by them.    
+- **Island of Broken Vows:** Legends speak of a small islet at the lake’s center where an ancient temple stands, visible only under the blood moon.    
 - **Voice Beneath the Waves:** Travelers whisper of a deep, sung melody that drifts up from the lake bed—a call to those who cannot find peace.
-    
 ### **Items & Treasures**
 
 - **Tears of Lacrimara**  
     _Small crystalline beads formed from the lake’s distilled sorrow._  
-    **Effect:** Grants 1 white or black die for one ritual roll; wearer gains 1 Ruin.
-    
+    **Effect:** Grants 1 white or black die for one ritual roll; wearer gains 1 Ruin.    
 - **Chalice of Mourning**  
     _A silver chalice stained by the lake’s waters._  
     **Effect:** Temporarily negates one physical wound; user gains haunting visions.

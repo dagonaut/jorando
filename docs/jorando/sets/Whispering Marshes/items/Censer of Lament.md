@@ -3,6 +3,7 @@
 _An ancient thurible of blackened brass, its surface etched with worn holy symbols and rusted chain links. When lit, it releases a pale, curling incense that whispers in forgotten tongues, carrying sorrowful wails and fleeting glimpses of the dead._
 
 _"Their grief will calm the spirits—if you can bear to carry it."_
+_"The smoke sings what the throat cannot."_
 
 **Effect:**  
 When lit, the censer pacifies hostile spirits within a short radius for one scene. However, the one who bears it suffers hallucinations of Evershade’s final moments.

@@ -87,19 +87,14 @@ Inside, decay reigns. The Hollowed Saints who once absolved grief now guard thei
 
 1. **Reliquary of the Hollowed Saints**
    - *Mechanic*: Grants a miracle once per delve, but inflicts a lasting curse.
-2. **Saint’s Fingerbone**
-   - *Mechanic*: Grants divine protection (1 scene).
-3. **Twisted Branch**
-   - *Mechanic*: Used for dark rites or as a weapon.
-4. **Cracked Relic of the Hollowed Saints**
-   - *Mechanic*: Repels darkness briefly when wept upon.
-1. **[[Sacrificial Dagger of the Fallen Priests]]**
-   - *Mechanic*: Wounds carry a lingering curse.
-6. **Stained Glass Shard**
-   - *Mechanic*: Deflects spirit attacks.
-1. Ring of Some Kind
-2. Key of some kind
-3. **Hollowed Veil** - rename
+1. **[[Saint’s Fingerbone]]**
+2. **[[Twisted Branch]]**
+3. **[[Cracked Relic of the Hollowed Saints]]**
+4. **[[Sacrificial Dagger of the Fallen Priests]]**
+5. **[[Stained Glass Shard]]**
+6. Ring of Some Kind
+7. Key of some kind
+8. **Hollowed Veil** - rename
    - *Mechanic*: Blend with surroundings near holy places.
 1. **Candle of the Forgotten Rite** -rename
    - *Mechanic*: Reveals hidden paths.

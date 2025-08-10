@@ -1,96 +1,54 @@
 Theme: Forgotten Sorrows, Lingering Ghosts, Faded Memories
 
-  
-
-History and Lore:
-
-  
+### History and Lore:
 
 The village of **Evershade** once thrived on the shores of the Lake of Tears, sustained by its proximity to the Ruined Church of the Hollowed Saints. The villagers were devoted followers of the church, and many of them worked as caretakers of the holy site, tending to the church’s needs and supporting the pilgrims who came to seek solace in the lake’s sorrowful waters.
 
   
-
 As the Invaders/Usurper's influence spread, the amount of mourners grew exponentially, but the nature of their sorrow had changed. Turned darker, more violent, seeking vengeance--not peace.
 
-  
+### **The Village’s Decline:** 
 
-### **The Village’s Decline:**
+Evershade began to decline as the influence of the Lake of Tears grew darker and more oppressive. The lake, once a source of solace, became a place of deepening sorrow. The villagers, who had long relied on the lake’s waters and the church’s blessings, found themselves slowly succumbing to despair. Crops withered, animals fell ill, and the once vibrant village became eerily quiet, as if the land itself was mourning.  
 
-  
+In their desperation, the villagers turned to the Hollowed Saints for guidance, but the saints themselves were falling into corruption. The rites and rituals meant to protect the village only deepened the curse that had taken root. Over time, the people of Evershade began to leave, seeking refuge in distant lands. Those who remained were eventually driven mad by the lake’s influence, disappearing into the mists or succumbing to the hollowing curse that had claimed the saints.  
 
-Evershade began to decline as the influence of the Lake of Tears grew darker and more oppressive. The lake, once a source of solace, became a place of deepening sorrow. The villagers, who had long relied on the lake’s waters and the church’s blessings, found themselves slowly succumbing to despair. Crops withered, animals fell ill, and the once vibrant village became eerily quiet, as if the land itself was mourning.
+**Current State:**
 
-  
+Evershade is now a ghostly ruin, shrouded in perpetual twilight. The village is overgrown with thick, gnarled vines and trees that block out the sun, casting everything in shadow. The once sturdy houses are now crumbling, their windows shattered and doors hanging ajar. The air is thick with the scent of decay and the faint echo of voices long gone.  
 
-In their desperation, the villagers turned to the Hollowed Saints for guidance, but the saints themselves were falling into corruption. The rites and rituals meant to protect the village only deepened the curse that had taken root. Over time, the people of Evershade began to leave, seeking refuge in distant lands. Those who remained were eventually driven mad by the lake’s influence, disappearing into the mists or succumbing to the hollowing curse that had claimed the saints.
-
-  
-
-Current State:
-
-  
-
-Evershade is now a ghostly ruin, shrouded in perpetual twilight. The village is overgrown with thick, gnarled vines and trees that block out the sun, casting everything in shadow. The once sturdy houses are now crumbling, their windows shattered and doors hanging ajar. The air is thick with the scent of decay and the faint echo of voices long gone.
-
-  
-
-### **Notable Features:**
-
-  
+### **Notable Features:**  
 
 - **The Weeping Well:**
 
-  - At the center of the village stands an old well, known as the Weeping Well. The water within is tainted by the same sorrowful energy that affects the Lake of Tears. It is said that those who drink from it will be granted visions of the past, but they may also be overwhelmed by the grief that lingers in the village.
-
-  
+  - At the center of the village stands an old well, known as the Weeping Well. The water within is tainted by the same sorrowful energy that affects the Lake of Tears. It is said that those who drink from it will be granted visions of the past, but they may also be overwhelmed by the grief that lingers in the village.  
 
 - **The Forgotten Shrine:**
 
-  - Near the edge of the village lies a small, forgotten shrine dedicated to an unnamed deity. The shrine is covered in moss and ivy, with offerings left by the villagers before they abandoned the place. Some believe that this deity still watches over the village, its power diminished but not entirely gone.
-
-  
+  - Near the edge of the village lies a small, forgotten shrine dedicated to an unnamed deity. The shrine is covered in moss and ivy, with offerings left by the villagers before they abandoned the place. Some believe that this deity still watches over the village, its power diminished but not entirely gone.  
 
 - **The Silent Graveyard:**
 
-  - Behind the village, a small graveyard holds the remains of those who died before the village’s abandonment. The graves are marked with simple stones, many of which have been eroded by time. Ghostly figures are sometimes seen wandering among the graves, their forms flickering like candles in the wind.
-
-  
+  - Behind the village, a small graveyard holds the remains of those who died before the village’s abandonment. The graves are marked with simple stones, many of which have been eroded by time. Ghostly figures are sometimes seen wandering among the graves, their forms flickering like candles in the wind.  
 
 - **The Hollowed Tavern:**
 
-  - The village’s once lively tavern is now a hollow shell, its interior filled with broken furniture and dust. The tavern was the last refuge of the remaining villagers, and their spectral forms can sometimes be seen inside, endlessly replaying the final days of the village.
+  - The village’s once lively tavern is now a hollow shell, its interior filled with broken furniture and dust. The tavern was the last refuge of the remaining villagers, and their spectral forms can sometimes be seen inside, endlessly replaying the final days of the village.  
 
-  
+### **Folklore and Legends:**  
 
-### **Folklore and Legends:**
-
-  
-
-- **The Curse of Evershade:** It is said that the village’s decline was not just due to the lake’s influence but also because of a curse placed upon it by the Hollowed Saints. The curse was a punishment for the villagers’ growing despair and loss of faith, dooming the village to eternal sorrow.
-
-  
+- **The Curse of Evershade:** It is said that the village’s decline was not just due to the lake’s influence but also because of a curse placed upon it by the Hollowed Saints. The curse was a punishment for the villagers’ growing despair and loss of faith, dooming the village to eternal sorrow.  
 
 - **The Last Pilgrim:** A local legend speaks of a pilgrim who arrived in Evershade after the village had been abandoned. The pilgrim sought the relics of the Hollowed Saints but was never seen again. Some say that his ghost now haunts the village, searching for a way to lift the curse.
-
-  
-
-### **Encounter Possibilities:**
-
-  
+### **Encounter Possibilities:**  
 
 - **Wandering Spirits:** The village is haunted by the spirits of its former inhabitants, who are bound to the place by their sorrow. These spirits are not always hostile but can become dangerous if provoked or if they sense the adventurers’ despair.
 
-- **Lost Relics:** Evershade still holds relics of the church and the saints, hidden away in the ruins of homes and shrines. These items may provide clues to the village’s past or offer power to those who dare to claim them.
+- **Lost Relics:** Evershade still holds relics of the church and the saints, hidden away in the ruins of homes and shrines. These items may provide clues to the village’s past or offer power to those who dare to claim them.  
 
-  
+- **The Grieving Shade:** A powerful spirit, known as the Grieving Shade, lingers in the village, drawn by the overwhelming sorrow that pervades the place. This entity seeks to consume the grief of others, growing stronger with each encounter.  
 
-- **The Grieving Shade:** A powerful spirit, known as the Grieving Shade, lingers in the village, drawn by the overwhelming sorrow that pervades the place. This entity seeks to consume the grief of others, growing stronger with each encounter.
-
-  
-
-### **Conclusion:**
-
-  
+### **Conclusion:**  
 
 Evershade stands as a tragic reminder of the cost of despair and the dangers of losing hope. Its ruins are a testament to a time when faith was strong and the land was prosperous, but also to the darkness that can consume even the most devout when faced with overwhelming sorrow. Adventurers who explore the village may uncover its secrets, but they must tread carefully, lest they too fall victim to the same fate that claimed the villagers of Evershade.
 
@@ -211,7 +169,3 @@ The tunnel from the Weeping Well to the cistern is a relic of a time when the vi
 5. **Graven Stone Tablet** 
 
    - A small stone tablet carved with runes that speak of the lake’s power. Holding it grants resistance to curses but slowly drains the holder’s vitality.
-
-  
-
-These items reflect the eerie, sorrowful atmosphere of the abandoned village and the malevolent energy that permeates the tunnel, offering both valuable resources and dangerous temptations for players who dare to explore these haunted places.

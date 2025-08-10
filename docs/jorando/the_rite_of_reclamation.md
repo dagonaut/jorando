@@ -1,11 +1,11 @@
-**THE RITE OF RECLAMATION**
+
 
 > _"To unmake what sorrow hath made, one must mourn in reverse—remembering joy, restoring names, reassembling what was hollowed."_
 > —Inscription found on the *Fragment of the First Tear*
 
 ---
 
-## 🌿 Three Pillars of Reclamation
+## Three Pillars of Reclamation
 
 A multi-set restoration mechanic intended to reverse the corruption of Jorando and return it to a place where sorrow can be relieved, not compounded. Completing all three pillars is required to unlock the final Rite at the Fountain and the Mirror.
 
@@ -55,7 +55,7 @@ A multi-set restoration mechanic intended to reverse the corruption of Jorando a
 
 ---
 
-## 🕯 Final Rite: The Fountain and the Mirror
+##  Final Rite: The Fountain and the Mirror
 
 > _"Only by naming, cleansing, and remembering can sorrow release its grip. Only then will the fountain run sweet again, and the mirror reflect joy."_
 
@@ -68,7 +68,7 @@ A multi-set restoration mechanic intended to reverse the corruption of Jorando a
 
 ---
 
-## 🌙 Optional Mechanics
+##  Optional Mechanics
 
 ### **Despair / Hope Tokens**
 - Track the group’s descent or ascent.
