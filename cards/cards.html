@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cardApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Card Creator with Colors</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --bg-color: #e9e0ce;
+      --text-color: #1f3c5c;
+      --border-color: #1f3c5c;
+      --section-bg: #f6f3ed;
+      --image-bg: #2e4a66;
+      --gradient-top: #6c92a8;
+      --gradient-bottom: #4b6982;
+    }
+
+    body {
+      background: var(--bg-color);
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .card {
+      width: 380px;
+      border: 4px solid var(--border-color);
+      background: var(--bg-color);
+      box-shadow: 6px 6px 0 var(--border-color);
+      padding: 12px;
+    }
+
+    .title {
+      text-align: center;
+      background: linear-gradient(var(--gradient-top), var(--gradient-bottom));
+      color: var(--text-color);
+      font-weight: bold;
+      font-size: 24px;
+      padding: 10px;
+      border: 2px solid var(--border-color);
+      margin-bottom: 12px;
+    }
+
+    .image-box {
+      background: var(--image-bg);
+      border: 2px solid var(--border-color);
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .image-box img {
+      image-rendering: pixelated;
+      width: 120px;
+      height: auto;
+    }
+
+    .description, .quote, .effect {
+      border: 2px solid var(--border-color);
+      background: var(--section-bg);
+      padding: 12px;
+      margin-bottom: 12px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-color);
+    }
+
+    .quote {
+      font-style: italic;
+    }
+
+    .form-container {
+      width: 360px;
+      padding: 20px;
+      background: #fff;
+      border: 2px solid var(--border-color);
+      box-shadow: 4px 4px 0 var(--border-color);
+    }
+
+    .form-container label {
+      display: block;
+      margin: 10px 0 4px;
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    .form-container input, .form-container textarea {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid var(--border-color);
+      font-family: 'Georgia', serif;
+      background: #f6f3ed;
+    }
+
+    .color-picker {
+      width: 100%;
+      height: 36px;
+      border: none;
+      margin-bottom: 6px;
+      cursor: pointer;
+    }
+
+    .export-btn, .reset-btn {
+      margin-top: 12px;
+      padding: 10px;
+      background: var(--text-color);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .export-btn:hover, .reset-btn:hover {
+      background: var(--image-bg);
+    }
+  </style>
+</head>
+<body ng-controller="CardController">
+
+  <!-- Card Preview -->
+  <div class="card" id="card">
+    <div class="title">{{card.title}}</div>
+    <div class="image-box">
+      <img ng-src="{{card.image}}" alt="Card Image">
+    </div>
+    <div class="description">{{card.description}}</div>
+    <div class="quote">“{{card.quote}}”</div>
+    <div class="effect">{{card.effect}}</div>
+  </div>
+
+  <!-- Form -->
+  <div class="form-container">
+    <h2>Edit Card</h2>
+    <form>
+      <label for="title">Title</label>
+      <input id="title" type="text" ng-model="card.title">
+
+      <label for="image">Image Filename</label>
+      <input id="image" type="text" ng-model="card.image" placeholder="example.png">
+
+      <label for="description">Description</label>
+      <textarea id="description" rows="3" ng-model="card.description"></textarea>
+
+      <label for="quote">Quote</label>
+      <textarea id="quote" rows="3" ng-model="card.quote"></textarea>
+
+      <label for="effect">Effect</label>
+      <textarea id="effect" rows="3" ng-model="card.effect"></textarea>
+
+      <h3>Colors</h3>
+      <label>Background</label>
+      <input type="color" class="color-picker" ng-model="colors.bg" ng-change="updateColors()">
+
+      <label>Section Background</label>
+      <input type="color" class="color-picker" ng-model="colors.sectionBg" ng-change="updateColors()">
+
+      <label>Text</label>
+      <input type="color" class="color-picker" ng-model="colors.text" ng-change="updateColors()">
+
+      <label>Border</label>
+      <input type="color" class="color-picker" ng-model="colors.border" ng-change="updateColors()">
+
+      <label>Image Background</label>
+      <input type="color" class="color-picker" ng-model="colors.imageBg" ng-change="updateColors()">
+
+      <label>Gradient Top</label>
+      <input type="color" class="color-picker" ng-model="colors.gradientTop" ng-change="updateColors()">
+
+      <label>Gradient Bottom</label>
+      <input type="color" class="color-picker" ng-model="colors.gradientBottom" ng-change="updateColors()">
+    </form>
+
+    <button class="export-btn" ng-click="exportCard()">Export as PNG</button>
+    <button class="reset-btn" ng-click="resetColors()">Reset to Defaults</button>
+  </div>
+
+  <script>
+    angular.module('cardApp', [])
+      .controller('CardController', ['$scope', function($scope) {
+        // default colors
+        const defaultColors = {
+          bg: '#e9e0ce',
+          sectionBg: '#f6f3ed',
+          text: '#1f3c5c',
+          border: '#1f3c5c',
+          imageBg: '#2e4a66',
+          gradientTop: '#6c92a8',
+          gradientBottom: '#4b6982'
+        };
+
+        $scope.card = {
+          title: 'FEATHER OF PALE ROC',
+          image: 'i-feather-of-a-pale-roc.png',
+          description: 'An artifact of legend, plucked from the wing of a giant roc.',
+          quote: 'Warrior-Queen Maerla carried the feather into every battle. Untouched by blade or arrow. The day she lost it, she fell.',
+          effect: 'Grants immunity to the first attack in combat.'
+        };
+
+        $scope.colors = angular.copy(defaultColors);
+
+        $scope.updateColors = function() {
+          for (const [key, value] of Object.entries($scope.colors)) {
+            const cssVar = '--' + key.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
+            document.documentElement.style.setProperty(cssVar, value);
+          }
+        };
+
+        $scope.resetColors = function() {
+          $scope.colors = angular.copy(defaultColors);
+          $scope.updateColors();
+        };
+
+        $scope.exportCard = function() {
+          let cardElement = document.getElementById("card");
+          html2canvas(cardElement).then(canvas => {
+            let link = document.createElement("a");
+            link.download = $scope.card.title.replace(/\s+/g, "_") + ".png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+          });
+        };
+
+        // initialize on load
+        $scope.updateColors();
+      }]);
+  </script>
+</body>
+</html>
