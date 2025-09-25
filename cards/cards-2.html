@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cardApp">
+<head>
+  <meta charset="UTF-8" />
+  <title>Item Card Builder — Structural Templates</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    /* =================== CSS VARIABLES (global palette) =================== */
+    :root{
+      --bg-color:#e9e0ce;        /* page + parchment */
+      --section-bg:#f6f3ed;      /* text panel bg */
+      --text-color:#1f3c5c;      /* main text */
+      --border-color:#1f3c5c;    /* borders/shadows */
+      --image-bg:#2e4a66;        /* art well */
+      --gradient-top:#6c92a8;    /* title gradient start */
+      --gradient-bottom:#4b6982; /* title gradient end */
+
+      /* per-template accents (optional) */
+      --accent-1:#b1881c;
+      --accent-2:#6f2dbd;
+      --dark-1:#2a1c15;
+      --dark-2:#5c4436;
+    }
+
+    /* =================== Base Layout =================== */
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:var(--bg-color);
+      font-family: Georgia, "Times New Roman", serif;
+      display:flex;
+      gap:24px;
+      align-items:flex-start;
+      justify-content:center;
+      padding:24px;
+    }
+
+    /* ---------- Card Preview Shell ---------- */
+    #cardShell{
+      width:480px;                     /* a bit wider for flexibility */
+      min-height:720px;
+      background:var(--bg-color);
+      color:var(--text-color);
+      border:4px solid var(--border-color);
+      box-shadow:6px 6px 0 var(--border-color);
+      padding:14px;
+      position:relative;
+    }
+
+    /* shared elements (some templates reuse these) */
+    .title-bar{
+      background:linear-gradient(var(--gradient-top), var(--gradient-bottom));
+      color:var(--text-color);
+      border:2px solid var(--border-color);
+      text-align:center;
+      font-weight:700;
+      letter-spacing:0.5px;
+      font-size:32px;
+      padding:12px 10px;
+      margin-bottom:10px;
+    }
+
+    .artbox{
+      background:var(--image-bg);
+      border:2px solid var(--border-color);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:300px;
+      padding:8px;
+      margin-bottom:10px;
+    }
+    .artbox img{
+      max-width:80%;
+      height:auto;
+      image-rendering:pixelated;
+    }
+
+    .panel{
+      background:var(--section-bg);
+      border:2px solid var(--border-color);
+      padding:12px;
+      margin-bottom:10px;
+      line-height:1.55;
+      font-size:18px;
+      color:var(--text-color);
+    }
+    .panel.quote{ font-style:italic; }
+    .panel.effect .label{ font-weight:700; }
+
+    /* =================== TEMPLATE-SPECIFIC STYLES =================== */
+
+    /* 1) BOOKPLATE (inward curved frame) */
+    .bookplate{
+      padding:22px;
+      border:6px solid #442c20;
+      box-shadow:8px 8px 0 #2d1b11;
+      background:#d3a55f;
+      /* Inward scallop corners */
+      clip-path: path("M 0 26 Q 0 0 26 0 L calc(100% - 26px) 0 Q 100% 0 100% 26 L 100% calc(100% - 26px) Q 100% 100% calc(100% - 26px) 100% L 26 100% Q 0 100% 0 calc(100% - 26px) Z");
+    }
+    .bookplate .inner-frame{
+      border:6px solid #2c2217;
+      padding:16px;
+      background:rgba(0,0,0,0.05);
+    }
+    .bookplate .title-big{
+      font-size:44px;
+      text-align:center;
+      margin:0 0 8px;
+      color:#2c2217;
+    }
+    .bookplate .divider{
+      height:10px; border-bottom:6px solid #2c2217; margin:0 4px 12px;
+    }
+    .bookplate .artbox{ background:#c98e45; border-color:#2c2217; min-height:340px; }
+    .bookplate .panel{ border-color:#2c2217; background:#d9b070; }
+
+    /* 2) PANEL STACK (clear stacked sections with accents) */
+    .panels{
+      background:#efe4c7;
+      border:6px solid #7b611e;
+      box-shadow:8px 8px 0 #5f4b18;
+      padding:0;
+    }
+    .panels .panel-band{
+      border-top:6px solid #d2b76c;
+      border-bottom:6px solid #d2b76c;
+      padding:12px 16px;
+    }
+    .panels .panel-band.title{
+      background:var(--accent-1);
+      color:#2b220f;
+      font-weight:700;
+      text-align:center;
+      font-size:34px;
+    }
+    .panels .image-band{
+      background:#3a352d; padding:16px;
+      border-top:6px solid #7b611e; border-bottom:6px solid #7b611e;
+      display:flex; justify-content:center; align-items:center; min-height:330px;
+    }
+    .panels .image-band img{ max-width:75%; image-rendering:pixelated; }
+    .panels .text-band{ background:#efe4c7; font-size:18px; line-height:1.55; }
+    .panels .quote-band{ font-style:italic; }
+    .panels .effect-band{
+      background:#3a352d; color:#e9dfc5; text-align:center; font-size:22px;
+    }
+    .panels .effect-band .label{ color:#e1bf48; font-weight:700; }
+
+    /* 3) REGAL BANNER (bold colored blocks & ribbons) */
+    .regal{
+      background:#d5c39c;
+      border:8px solid var(--accent-2);
+      box-shadow:10px 10px 0 #5a2398;
+      padding:18px;
+    }
+    .regal .header{
+      background:var(--accent-2);
+      color:#f6ecff;
+      font-size:40px;
+      font-weight:800;
+      text-align:center;
+      padding:10px 8px;
+      border:4px solid #caa6ff;
+      margin-bottom:14px;
+    }
+    .regal .art-field{
+      background:var(--accent-2);
+      border:4px solid #caa6ff;
+      min-height:360px; display:flex; align-items:center; justify-content:center;
+      margin-bottom:14px;
+    }
+    .regal .art-field img{ max-width:70%; image-rendering:pixelated; }
+    .regal .strip{
+      border:4px solid var(--accent-2);
+      background:#eadfc6;
+      padding:12px;
+      margin-bottom:12px;
+      font-size:18px;
+      line-height:1.55;
+    }
+    .regal .strip.effect{ border-color:#d9c26e; background:#f3e9cc; }
+
+    /* 4) DARK STORY (long-form narrative) */
+    .story{
+      background:var(--dark-1);
+      border:6px solid var(--dark-2);
+      box-shadow:8px 8px 0 #20140f;
+      color:#e3d2b0;
+      padding:18px;
+      font-family: "Courier New", Courier, monospace;
+    }
+    .story .story-title{
+      text-transform:uppercase;
+      letter-spacing:2px;
+      text-align:center;
+      border:3px solid var(--dark-2);
+      padding:8px; margin-bottom:12px;
+      font-size:26px;
+    }
+    .story .story-art{
+      background:#1f1611;
+      border:3px solid var(--dark-2);
+      min-height:300px; display:flex; align-items:center; justify-content:center;
+      margin-bottom:12px;
+    }
+    .story .story-art img{ max-width:70%; image-rendering:pixelated; }
+    .story .story-body{
+      background:#241912;
+      border:3px solid var(--dark-2);
+      padding:12px; margin-bottom:10px;
+      line-height:1.6; font-size:18px;
+    }
+    .story .story-quote{ font-style:italic; opacity:.95; margin-bottom:8px; }
+    .story .story-effect .label{ color:#d0b082; font-weight:700; }
+
+    /* 5) MINIMAL ARTIFACT (image-first, airy) */
+    .minimal{
+      border:2px solid #999; box-shadow:none; padding:20px;
+      background:#f6f3ed;
+    }
+    .minimal .min-title{
+      text-align:center; font-size:36px; margin:0 0 8px;
+    }
+    .minimal .min-art{ text-align:center; margin:8px 0 14px; }
+    .minimal .min-art img{ max-width:92%; height:auto; }
+    .minimal .min-text{ line-height:1.65; font-size:18px; color:#333; }
+    .minimal .min-quote{ font-style:italic; margin-top:6px; }
+    .minimal .min-effect{ margin-top:6px; font-weight:600; }
+
+    /* =================== Form Styles =================== */
+    .form{
+      width:480px;
+      background:#ffffff;
+      border:2px solid var(--border-color);
+      box-shadow:4px 4px 0 var(--border-color);
+      padding:16px;
+    }
+    .form h2{ margin:0 0 8px; color:var(--text-color); }
+    .row{ margin-bottom:10px; }
+    label{ display:block; font-weight:700; color:var(--text-color); margin-bottom:4px; }
+    input[type="text"], select, textarea, input[type="color"]{
+      width:100%; padding:8px; border:1px solid var(--border-color);
+      background:#f6f3ed; font-family:Georgia, serif; font-size:14px;
+    }
+    textarea{ resize:vertical; min-height:76px; }
+    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .btn{
+      display:inline-block; width:100%; padding:10px; margin-top:10px;
+      background:var(--text-color); color:#fff; border:0; cursor:pointer; font-weight:700;
+      text-align:center;
+    }
+    .btn:hover{ background:var(--image-bg); }
+    .btn.secondary{ background:#777; }
+  </style>
+</head>
+<body ng-controller="CardController">
+
+  <!-- =================== CARD PREVIEW =================== -->
+  <div id="cardShell">
+    <!-- Swap entire structure by template -->
+    <div ng-switch="card.template">
+
+      <!-- 1) BOOKPLATE -->
+      <div ng-switch-when="bookplate" class="bookplate">
+        <div class="inner-frame">
+          <div class="title-big">{{card.title}}</div>
+          <div class="divider"></div>
+          <div class="artbox"><img ng-src="{{card.image}}" alt=""></div>
+          <div class="panel">{{card.description}}</div>
+          <div class="panel quote" ng-if="card.quote">“{{card.quote}}”</div>
+          <div class="panel effect"><span class="label">Effect:</span> {{card.effect}}</div>
+        </div>
+      </div>
+
+      <!-- 2) PANEL STACK -->
+      <div ng-switch-when="panels" class="panels">
+        <div class="panel-band title">{{card.title}}</div>
+        <div class="image-band"><img ng-src="{{card.image}}" alt=""></div>
+        <div class="panel-band text-band">{{card.description}}</div>
+        <div class="panel-band quote-band" ng-if="card.quote">“{{card.quote}}”</div>
+        <div class="panel-band effect-band"><span class="label">Effect:</span> {{card.effect}}</div>
+      </div>
+
+      <!-- 3) REGAL BANNER -->
+      <div ng-switch-when="regal" class="regal">
+        <div class="header">{{card.title}}</div>
+        <div class="art-field"><img ng-src="{{card.image}}" alt=""></div>
+        <div class="strip">{{card.description}}</div>
+        <div class="strip" ng-if="card.quote"><em>“{{card.quote}}”</em></div>
+        <div class="strip effect"><span class="label">Effect:</span> {{card.effect}}</div>
+      </div>
+
+      <!-- 4) DARK STORY -->
+      <div ng-switch-when="story" class="story">
+        <div class="story-title">{{card.title}}</div>
+        <div class="story-art"><img ng-src="{{card.image}}" alt=""></div>
+        <div class="story-body">{{card.description}}</div>
+        <div class="story-quote" ng-if="card.quote">“{{card.quote}}”</div>
+        <div class="story-effect"><span class="label">Effect:</span> {{card.effect}}</div>
+      </div>
+
+      <!-- 5) MINIMAL ARTIFACT -->
+      <div ng-switch-when="minimal" class="minimal">
+        <div class="min-title">{{card.title}}</div>
+        <div class="min-art"><img ng-src="{{card.image}}" alt=""></div>
+        <div class="min-text">{{card.description}}</div>
+        <div class="min-quote" ng-if="card.quote">“{{card.quote}}”</div>
+        <div class="min-effect"><span class="label">Effect:</span> {{card.effect}}</div>
+      </div>
+
+      <!-- Fallback -->
+      <div ng-switch-default class="minimal">
+        <div class="min-title">{{card.title}}</div>
+        <div class="min-art"><img ng-src="{{card.image}}" alt=""></div>
+        <div class="min-text">{{card.description}}</div>
+        <div class="min-quote" ng-if="card.quote">“{{card.quote}}”</div>
+        <div class="min-effect"><span class="label">Effect:</span> {{card.effect}}</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =================== FORM =================== -->
+  <div class="form">
+    <h2>Edit Card</h2>
+
+    <div class="row">
+      <label>Template</label>
+      <select ng-model="card.template">
+        <option value="bookplate">Bookplate (inward corners)</option>
+        <option value="panels">Panel Stack</option>
+        <option value="regal">Regal Banner</option>
+        <option value="story">Dark Story</option>
+        <option value="minimal">Minimal Artifact</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label>Title</label>
+      <input type="text" ng-model="card.title" />
+    </div>
+
+    <div class="row">
+      <label>Image filename (same folder)</label>
+      <input type="text" ng-model="card.image" placeholder="i-oil-of-oltuun.png" />
+    </div>
+
+    <div class="row">
+      <label>Description</label>
+      <textarea ng-model="card.description"></textarea>
+    </div>
+
+    <div class="row">
+      <label>Quote (optional)</label>
+      <textarea ng-model="card.quote"></textarea>
+    </div>
+
+    <div class="row">
+      <label>Effect</label>
+      <textarea ng-model="card.effect"></textarea>
+    </div>
+
+    <h3 style="margin:14px 0 8px;color:var(--text-color)">Colors</h3>
+    <div class="grid-2">
+      <div class="row"><label>Background</label>
+        <input type="color" ng-model="colors.bg" ng-change="updateColors()"></div>
+      <div class="row"><label>Section Background</label>
+        <input type="color" ng-model="colors.sectionBg" ng-change="updateColors()"></div>
+      <div class="row"><label>Text</label>
+        <input type="color" ng-model="colors.text" ng-change="updateColors()"></div>
+      <div class="row"><label>Border</label>
+        <input type="color" ng-model="colors.border" ng-change="updateColors()"></div>
+      <div class="row"><label>Image Well</label>
+        <input type="color" ng-model="colors.imageBg" ng-change="updateColors()"></div>
+      <div class="row"><label>Gradient Top</label>
+        <input type="color" ng-model="colors.gradientTop" ng-change="updateColors()"></div>
+      <div class="row"><label>Gradient Bottom</label>
+        <input type="color" ng-model="colors.gradientBottom" ng-change="updateColors()"></div>
+
+      <!-- optional accents used by some templates -->
+      <div class="row"><label>Accent 1</label>
+        <input type="color" ng-model="colors.accent1" ng-change="updateColors()"></div>
+      <div class="row"><label>Accent 2</label>
+        <input type="color" ng-model="colors.accent2" ng-change="updateColors()"></div>
+    </div>
+
+    <button class="btn" ng-click="exportCard()">Export as PNG</button>
+    <button class="btn secondary" ng-click="resetColors()">Reset Colors</button>
+  </div>
+
+  <!-- =================== APP =================== -->
+  <script>
+    angular.module('cardApp', [])
+      .controller('CardController', ['$scope', function($scope){
+
+        // Defaults
+        const DEFAULT_COLORS = {
+          bg:'#e9e0ce',
+          sectionBg:'#f6f3ed',
+          text:'#1f3c5c',
+          border:'#1f3c5c',
+          imageBg:'#2e4a66',
+          gradientTop:'#6c92a8',
+          gradientBottom:'#4b6982',
+          accent1:'#b1881c',
+          accent2:'#6f2dbd'
+        };
+
+        $scope.card = {
+          template:'bookplate',
+          title:'Oil of Oltuun',
+          image:'i-oil-of-oltuun.png',
+          description:'A blackened vial filled with thick, resinous oil. It clings to the glass like sap and smells faintly of incense and blood.',
+          quote:'The pyres of Oltuun burned for seven days, and still the oil ran.',
+          effect:'Coat a weapon — it burns with spectral flame for one fight. If spilled, it ignites uncontrollably.'
+        };
+
+        $scope.colors = angular.copy(DEFAULT_COLORS);
+
+        function applyVars(){
+          const map = {
+            bg:'--bg-color',
+            sectionBg:'--section-bg',
+            text:'--text-color',
+            border:'--border-color',
+            imageBg:'--image-bg',
+            gradientTop:'--gradient-top',
+            gradientBottom:'--gradient-bottom',
+            accent1:'--accent-1',
+            accent2:'--accent-2'
+          };
+          for (const k in map){
+            document.documentElement.style.setProperty(map[k], $scope.colors[k]);
+          }
+        }
+        $scope.updateColors = applyVars;
+
+        $scope.resetColors = function(){
+          $scope.colors = angular.copy(DEFAULT_COLORS);
+          applyVars();
+        };
+
+        $scope.exportCard = function(){
+          // Capture only the preview shell
+          html2canvas(document.getElementById('cardShell'), {backgroundColor:null}).then(canvas=>{
+            const a = document.createElement('a');
+            a.download = ($scope.card.title || 'card').replace(/\s+/g,'_') + '.png';
+            a.href = canvas.toDataURL('image/png');
+            a.click();
+          });
+        };
+
+        // init once
+        applyVars();
+      }]);
+  </script>
+</body>
+</html>
