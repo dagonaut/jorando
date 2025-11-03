@@ -194,19 +194,19 @@
 
   <!-- ===== Card Preview ===== -->
   <div class="card" id="card" ng-class="card.template">
-    <div class="title-bar">{{card.title}}</div>
+    <div class="title-bar" ng-style="{'font-size': fontSizeTitle + 'px'}">{{card.title}}</div>
 
     <!-- Panels / sections are always present; templates style how they look -->
     <div class="artbox">
-      <img ng-src="{{card.image}}" alt="Item image" />
+      <img ng-src="{{card.image}}" alt="Item image" ng-style="{'max-width': imageScale + '%'}" />
     </div>
 
     <!-- Some templates insert subtle separators -->
     <div class="spacer-line" ng-if="card.template==='template-panels'"></div>
 
-    <div class="panel description">{{card.description}}</div>
-    <div class="panel quote" ng-if="card.quote">“{{card.quote}}”</div>
-    <div class="panel effect"><span class="label">Effect:</span> {{card.effect}}</div>
+    <div class="panel description" ng-style="{'font-size': fontSizeDescription + 'px'}">{{card.description}}</div>
+    <div class="panel quote" ng-if="card.quote" ng-style="{'font-size': fontSizeQuote + 'px'}">“{{card.quote}}”</div>
+    <div class="panel effect" ng-style="{'font-size': fontSizeEffect + 'px'}"><span class="label">Effect:</span> {{card.effect}}</div>
   </div>
 
   <!-- ===== Form ===== -->
@@ -216,7 +216,7 @@
     <div class="row">
       <label>Template</label>
       <select ng-model="card.template">
-        <option value="template-classic">Classic / Oil</option>
+        <option value="template-classic">Classic / Feather</option>
         <option value="template-panels">Panels / Shard</option>
         <option value="template-regal">Regal / Chalice</option>
         <option value="template-dark">Dark / Echo</option>
@@ -227,26 +227,36 @@
     <div class="row">
       <label>Title</label>
       <input type="text" ng-model="card.title" />
+      <input type="number" ng-model="fontSizeTitle" style="width:60px;" />
     </div>
 
     <div class="row">
       <label>Image filename (same folder)</label>
-      <input type="text" ng-model="card.image" placeholder="i-oil-of-oltuun.png" />
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input type="text" ng-model="card.image" placeholder="oil-bottle.png" style="flex:1" />
+        <!-- <button type="button" class="btn secondary" style="width:auto;padding:6px 10px" ng-click="imageScale = Math.max(10, imageScale - 5)">−</button> -->
+        <input type="number" ng-model="imageScale" style="width:64px;text-align:center"  />
+        <!-- <button type="button" class="btn secondary" style="width:auto;padding:6px 10px" ng-click="imageScale = Math.min(100, imageScale + 5)">+</button> -->
+        <span style="margin-left:6px;">%</span>
+      </div>
     </div>
 
     <div class="row">
       <label>Description</label>
       <textarea ng-model="card.description"></textarea>
+      <input type="number" ng-model="fontSizeDescription" style="width:60px;" />
     </div>
 
     <div class="row">
       <label>Quote (optional)</label>
       <textarea ng-model="card.quote"></textarea>
+      <input type="number" ng-model="fontSizeQuote" style="width:60px;" />
     </div>
 
     <div class="row">
       <label>Effect</label>
       <textarea ng-model="card.effect"></textarea>
+      <input type="number" ng-model="fontSizeEffect" style="width:60px;" />
     </div>
 
     <h3 style="margin:14px 0 8px;color:var(--text-color)">Colors</h3>
@@ -303,14 +313,16 @@
         $scope.card = {
           template:'template-classic',                         // IMPORTANT: initialize so it renders
           title:'Oil of Oltuun',
-          image:'i-oil-of-oltuun.png',
+          image:'oil-bottle.png',
           description:'A blackened vial filled with thick, resinous oil. It clings to the glass like sap and smells faintly of incense and blood.',
           quote:'The pyres of Oltuun burned for seven days, and still the oil ran.',
           effect:'Coat a weapon — it burns with spectral flame for one fight. If spilled, it ignites uncontrollably.'
         };
 
         $scope.colors = angular.copy(DEFAULT_COLORS);
-
+        // image scale percent for the preview (max-width as percentage)
+        $scope.imageScale = 70;
+        
         $scope.updateColors = function(){
           const map = {
             bg:'--bg-color',
@@ -343,6 +355,8 @@
 
         // initialize once
         $scope.updateColors();
+        // ensure imageScale clamp at start
+        //$scope.imageScale = Math.min(100, Math.max(10, $scope.imageScale));
       }]);
   </script>
 </body>
