@@ -1,0 +1,65 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: S3 bucket configured for static website hosting for chainswords.16watt.com
+
+Resources:
+  StaticSiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: chainswords.16watt.com
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+      AccessControl: PublicRead
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        IgnorePublicAcls: false
+        BlockPublicPolicy: false
+        RestrictPublicBuckets: false
+      Tags:
+        - Key: Purpose
+          Value: static-website
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref StaticSiteBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: '*'
+            Action: s3:GetObject
+            Resource: !Sub arn:aws:s3:::${StaticSiteBucket}/*
+
+  # Managed policy you can attach to an IAM user/role used by CI (GitHub Actions).
+  # This avoids creating credentials here; attach the managed policy to your deploy identity.
+  DeployS3ManagedPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: chainswords-deploy-s3-policy
+      Description: Policy granting limited S3 permissions for deploying the static site to chainswords.16watt.com
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowBucketLevelOps
+            Effect: Allow
+            Action:
+              - s3:ListBucket
+              - s3:GetBucketWebsite
+              - s3:PutBucketWebsite
+              - s3:CreateBucket
+            Resource: arn:aws:s3:::chainswords.16watt.com
+          - Sid: AllowObjectLevelOps
+            Effect: Allow
+            Action:
+              - s3:PutObject
+              - s3:PutObjectAcl
+              - s3:GetObject
+              - s3:DeleteObject
+            Resource: arn:aws:s3:::chainswords.16watt.com/*
+
+Outputs:
+  WebsiteURL:
+    Description: "Static website URL"
+    Value: !GetAtt StaticSiteBucket.WebsiteURL

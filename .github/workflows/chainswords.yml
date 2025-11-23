@@ -1,0 +1,36 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION || 'us-east-1' }}
+
+      - name: (Optional) build
+        run: |
+          npm ci --if-present
+          npm run build --if-present
+
+      - name: Sync repository to S3
+        run: |
+          # sync repo root -> bucket; exclude GitHub metadata and node modules
+          aws s3 sync . s3://chainswords.16watt.com \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "node_modules/*" \
+            --delete \
+            --acl public-read
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION || 'us-east-1' }}
