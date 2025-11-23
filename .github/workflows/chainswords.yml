@@ -29,8 +29,6 @@ jobs:
           aws s3 sync . s3://chainswords.16watt.com \
             --exclude ".git/*" \
             --exclude ".github/*" \
-            --exclude "node_modules/*" \
-            --delete \
-            --acl public-read
+            --exclude "node_modules/*" 
         env:
           AWS_REGION: ${{ secrets.AWS_REGION || 'us-east-1' }}
